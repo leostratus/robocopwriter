@@ -15,7 +15,7 @@ new five.Board().on("ready", function() {
     , servoRL = new five.Servo({
         pin: "O3",
         type: "continuous"
-    });
+    })
     , servoRR = new five.Servo({
         pin: "O2",
         type: "continuous"
@@ -29,9 +29,17 @@ new five.Board().on("ready", function() {
     servoRL.move(110);
     servoRR.move(-110);
 
-    // LEDs?
+    // Be RoboCop/blink the LEDs
 
-    
+    var blueHigh = new five.Pin(2).high()
+    , blueLed = new five.Led(3)
+    , blueLow = new five.Pin(4).low()
+    , redHigh = new five.Pin(12).high
+    , redLed = new five.Led(13)
+    , redLow = new five.Pin(14).low();
 
+
+    blueLed.pulse();
+    redLed.pulse();
 
 });
