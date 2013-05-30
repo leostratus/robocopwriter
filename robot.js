@@ -68,13 +68,13 @@ board.on("ready", function() {
     }
 
     function init(){
-        lightup();
+        //lightup();
         stop();
         up();
     }
 
     var bot = {
-        init: init
+        init: init,
         go: go,
         goback: goback,
         stop: stop,
