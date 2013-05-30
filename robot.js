@@ -1,7 +1,8 @@
 var five = require("johnny-five");
 
-new five.Board().on("ready", function() {
+var board = new five.Board();
 
+board.on("ready", function() {
     // Set up the servos
 
     var servoFL = new five.Servo({
@@ -15,23 +16,56 @@ new five.Board().on("ready", function() {
     , servoRL = new five.Servo({
         pin: "O3",
         type: "continuous"
-    });
+    })
     , servoRR = new five.Servo({
         pin: "O2",
         type: "continuous"
-    });
+    })
+    , servoArm = new five.Servo("O4");
 
     // Test motion to make sure wheels all go in the right direction, 
     // because after a night of drinking mental models are HARD
 
-    servoFL.move(110);
-    servoFR.move(-110);
-    servoRL.move(110);
-    servoRR.move(-110);
+    function go(){
+        servoFL.move(110);
+        servoFR.move(-110);
+        servoRL.move(110);
+        servoRR.move(-110);
+    }
 
-    // LEDs?
+    function goback(){
+        servoFL.move(-110);
+        servoFR.move(110);
+        servoRL.move(-110);
+        servoRR.move(110);
+    }
 
-    
+    function stop(){
+        servoFL.move(90);
+        servoFR.move(90);
+        servoRL.move(90);
+        servoRR.move(90);
+    }
 
+    function up(){
+        servoArm.move(30);
+    }
+
+    function down(){
+        servoArm.move(0);
+    }
+
+    var bot = {
+        go: go,
+        goback: goback,
+        stop: stop,
+        up: up,
+        down: down
+    };
+
+    board.repl.inject({bot: bot});
+
+    bot.stop();
+    bot.up();
 
 });
