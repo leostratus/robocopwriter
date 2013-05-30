@@ -55,17 +55,37 @@ board.on("ready", function() {
         servoArm.move(0);
     }
 
+    function lightup(){
+        // Be RoboCop/blink the LEDs
+        var blueHigh = new five.Pin(2).high()
+        , blueLed = new five.Led(3)
+        , blueLow = new five.Pin(4).low()
+        , redHigh = new five.Pin(12).high
+        , redLed = new five.Led(13)
+        , redLow = new five.Pin(14).low();
+        blueLed.pulse();
+        redLed.pulse();
+    }
+
+    function init(){
+        lightup();
+        stop();
+        up();
+    }
+
     var bot = {
+        init: init
         go: go,
         goback: goback,
         stop: stop,
         up: up,
-        down: down
+        down: down,
+        lightup: lightup
     };
 
     board.repl.inject({bot: bot});
 
-    bot.stop();
-    bot.up();
+    bot.init();
+
 
 });
