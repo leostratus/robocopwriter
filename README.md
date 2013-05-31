@@ -4,4 +4,4 @@ Made from a Tinkerkit attached to an Arduino. Some LEDs, four servos converted i
 
 Hopefully will try and get some detailed photos up here showing teh bot in action so that you can copy the setup and build your own!
 
-Here is a (http://t.co/feVmTLF5nS)[video] from JSConf 2013.
+Here is a [http://t.co/feVmTLF5nS](video) from JSConf 2013.
