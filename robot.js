@@ -1,6 +1,5 @@
-var five = require("johnny-five");
-
-var board = new five.Board();
+var five = require("johnny-five")
+    , board = new five.Board();
 
 board.on("ready", function() {
     // Set up the servos
@@ -23,8 +22,7 @@ board.on("ready", function() {
     })
     , servoArm = new five.Servo("O4");
 
-    // Test motion to make sure wheels all go in the right direction, 
-    // because after a night of drinking mental models are HARD
+    // Functions to control the bot's movement
 
     function go(){
         servoFL.move(110);
