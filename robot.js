@@ -68,12 +68,17 @@ board.on("ready", function() {
     }
 
     function init(){
-        //lightup();
+        lightup();
         stop();
         up();
     }
 
     var bot = {
+        arm: servoArm,
+        fl: servoFL,
+        fr: servoFR,
+        rl: servoRL,
+        rr: servoRR,
         init: init,
         go: go,
         goback: goback,
